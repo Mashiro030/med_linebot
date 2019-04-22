@@ -21,39 +21,41 @@ const bot = linebot({
   channelAccessToken: configGet.get("CHANNEL_ACCESS_TOKEN")
 });
 const linebotParser = bot.parser();
-const config = {
-  channelAccessToken: configGet.get("CHANNEL_ACCESS_TOKEN"),
-  channelSecret: configGet.get("CHANNEL_SECRET")
-};
 
- 
 app.post('/webhook', linebotParser,function (req, res) {
     console.log('webhook in')
-    console.log('res: '+res)
-    // db.query("SELECT * FROM `med_appointment_sub` WHERE `ID`=?",['A123456789'] , (error, results, fields) => {
-    // console.log('results: '+results[0].ID)
-        console.log(JSON.stringify(res))     
-    // })
 });
 
-
+// const app=function app(){
+//     if (event.message.text=='掛號'){
+//         event.reply({ type: 'text', text: '請問你要掛哪一科?' });
+//     }
+// }
 
 bot.on('message', function (event) {
-    if(event.message.text == "A123456789") {
-        db.query("SELECT * FROM `med_appointment_sub` WHERE `ID`=?",["A123456789"] , (error, results, fields) => {
-            console.log(results)})
-            if(resuslt == true){
-                let replyMsg = request.db.query("SELECT * FROM `med_appointment_sub` WHERE `ID`= ?",["A123456789"])
-                console.log(replyMsg);
-                event.reply(util.inspect(replyMsg,{depth:null}))
-            }
-    } else {
-        event.reply(['你好，請輸入預約掛號或查詢預約已進行操作。']).then(function (data) {
-            console.log(event.message.text)}).catch(function (error) {
-        });
-    } 
-})
+    if(event.message.text=='掛號'){
+        console.log(event.message.text)
+        event.reply({ type: 'text', text: '請問你要掛哪一科?' });
+        console.log(event)
+    }
+    if(event.message.text=='牙科'){
+        console.log(event.message.text)
+        event.reply({ type: 'text', text: '請輸入身分證已進行驗證: '})
+    }
     
+});
+
+ 
+    // db.query("SELECT * FROM `med_appointment_sub` WHERE `ID`= ?", [event.message.text], (error, results, fields) => {
+    //     // console.log(results);
+    //     if (results.length == false) {
+    //         console.log('wrong input');
+    //         event.reply("wrong input");
+    //     } else {
+    //         console.log(results[0]);
+    //         event.reply(JSON.stringify(results[0]));
+    //     }
+    // });
 
 
 //因為 express 預設走 port 3000，而 heroku 上預設卻不是，要透過下列程式轉換
