@@ -28,12 +28,16 @@ app.post('/webhook', linebotParser, function (req, res) {
 });
 
 var time = [];
+<<<<<<< HEAD
 var text = [];
+=======
+>>>>>>> b464a475d083d5fd0e26cbd5e9a62c0740971508
 
 bot.on('message', function (event) {
     if (event.message.text == '查詢') {
         console.log(event.message.text);
         event.reply({ type: 'text', text: '請輸入身分證已進行查詢: ' })
+<<<<<<< HEAD
         time.push(event.timestamp)
         console.log(time)
         time = []
@@ -43,26 +47,39 @@ bot.on('message', function (event) {
     if (event.message.text == '掛號') {
         console.log(event.message.text)
         event.reply({ type: 'text', text: '請問你要掛哪一科?請輸入牙科或胸腔科' });
+=======
+>>>>>>> b464a475d083d5fd0e26cbd5e9a62c0740971508
         console.log(time.push(event.timestamp))
         console.log(time)
         time = []
         console.log(time)
     }
+<<<<<<< HEAD
     if (event.message.text == '牙科') {
         console.log(event.message.text)
         event.reply({ type: 'text', text: '請輸入身分證已進行驗證: ' })
+=======
+    if (event.message.text == '掛號') {
+        console.log(event.message.text)
+        event.reply({ type: 'text', text: '請問你要掛哪一科?請輸入牙科或胸腔科' });
+>>>>>>> b464a475d083d5fd0e26cbd5e9a62c0740971508
         console.log(time.push(event.timestamp))
         console.log(time)
         time = []
         console.log(time)
     }
+<<<<<<< HEAD
     if (event.message.text == '胸腔科') {
+=======
+    if (event.message.text == '牙科') {
+>>>>>>> b464a475d083d5fd0e26cbd5e9a62c0740971508
         console.log(event.message.text)
         event.reply({ type: 'text', text: '請輸入身分證已進行驗證: ' })
         console.log(time.push(event.timestamp))
         console.log(time)
         time = []
         console.log(time)
+<<<<<<< HEAD
     }
 });
 
@@ -86,10 +103,40 @@ bot.on('message', function (event){
 
 
 
+=======
+    }
+    if (event.message.text == '胸腔科') {
+        console.log(event.message.text)
+        event.reply({ type: 'text', text: '請輸入身分證已進行驗證: ' })
+        console.log(time.push(event.timestamp))
+        console.log(time)
+        time = []
+        console.log(time)
+    }
+});
+
+
+
+
+// db.query("SELECT * FROM `med_appointment_sub` WHERE `ID`= ?", [event.message.text], (error, results, fields) => {
+//     // console.log(results);
+//     if (results.length == false) {
+//         console.log('wrong input');
+//         event.reply("wrong input");
+//     } else {
+//         console.log(results[0]);
+//         event.reply(JSON.stringify(results[0]));
+//     }
+// });
+>>>>>>> b464a475d083d5fd0e26cbd5e9a62c0740971508
 
 
 //因為 express 預設走 port 3000，而 heroku 上預設卻不是，要透過下列程式轉換
 var server = app.listen(process.env.PORT || 8080, function () {
     var port = server.address().port;
     console.log("App now running on port", port);
+<<<<<<< HEAD
 });
+=======
+});
+>>>>>>> b464a475d083d5fd0e26cbd5e9a62c0740971508
