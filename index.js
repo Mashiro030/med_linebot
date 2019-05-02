@@ -65,10 +65,9 @@ bot.on('message', function (event) {
                 event.reply({ type: 'text', text: '你有已掛號的紀錄，請輸入查詢以檢視相關資訊' });
             }
             else if(results.length == false){
-                event.reply({type:'text',text:'請一次輸入:1.身分證2.姓名3.性別4.科別5.預約時間6.醫生'});
-                let val = {ID:userinput}
-                
-                db.query("INSERT INTO `med_appointment_sub` set=?",)
+                event.reply({type:'text',text:'請依序輸入:1.身分證2.姓名3.性別4.科別5.預約時間6.醫生'});
+        
+                db.query("INSERT INTO `med_appointment_sub` set=?",{ID:event.message.text,Name:event.message.text,Sex:event.message.text,Subject:event.message.text,App_time:event.message.text,Doctor:event.message.text})
                 
             } 
         });
