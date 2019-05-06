@@ -68,22 +68,22 @@ function getNewToken(oAuth2Client, callback) {
 
 /**
  * Prints the names and majors of students in a sample spreadsheet:
- * @see https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
+ * @see https://docs.google.com/spreadsheets/d/1iqZWdfswYPzuAiXt5iren_zWndUqeLk5s3G76lwH-zY/edit#gid=1140517517
  * @param {google.auth.OAuth2} auth The authenticated Google OAuth client.
  */
 function listMajors(auth) {
   const sheets = google.sheets({version: 'v4', auth});
   sheets.spreadsheets.values.get({
-    spreadsheetId: '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms',
-    range: 'Class Data!A2:E',
+    spreadsheetId: '1iqZWdfswYPzuAiXt5iren_zWndUqeLk5s3G76lwH-zY',
+    range: '回應!A2:G',
   }, (err, res) => {
     if (err) return console.log('The API returned an error: ' + err);
     const rows = res.data.values;
     if (rows.length) {
       console.log('Name, Major:');
-      // Print columns A and E, which correspond to indices 0 and 4.
+      // Print columns A and G, which correspond to indices 0~5.
       rows.map((row) => {
-        console.log(`${row[0]}, ${row[4]}`);
+        console.log(`${row[0]},${row[1]},${row[2]} ,${row[3]},${row[4]},${row[5]}`);
       });
     } else {
       console.log('No data found.');
